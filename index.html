@@ -1,34 +1,48 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>GaryGPT</title>
+    <meta charset="UTF-8">
+    <title>Ask GaryGPT</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <h1>Ask GaryGPT</h1>
-  <input id="question" placeholder="Ask about Gary's experience" />
-  <button onclick="ask()">Ask</button>
-  <p id="answer"></p>
+    <div class="chat-container">
+        <h1>Ask GaryGPT</h1>
+        <div id="chat-box" class="chat-box"></div>
 
-<script>
-  async function ask() {
-    const question = document.getElementById("question").value;
-    const response = await fetch("/ask", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query: question })
-    });
-    const data = await response.json();
+        <form id="chat-form">
+            <input type="text" id="user-input" placeholder="Type your question here..." autocomplete="off" required />
+            <button type="submit">Ask</button>
+        </form>
+    </div>
 
-    // Check if answer exists before displaying
-    if (data.answer) {
-      document.getElementById("answer").innerText = data.answer;
-    } else if (data.error) {
-      document.getElementById("answer").innerText = "Error: " + data.error;
-    } else {
-      document.getElementById("answer").innerText = "No answer received.";
-    }
-  }
-</script>
+    <script>
+        const form = document.getElementById("chat-form");
+        const input = document.getElementById("user-input");
+        const chatBox = document.getElementById("chat-box");
+
+        function addMessage(role, text) {
+            const message = document.createElement("div");
+            message.className = `message ${role}`;
+            message.innerText = text;
+            chatBox.appendChild(message);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const question = input.value;
+            addMessage("user", question);
+            input.value = "";
+
+            const response = await fetch("/ask", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ question })
+            });
+            const data = await response.json();
+            addMessage("bot", data.answer);
+        });
+    </script>
 </body>
 </html>
