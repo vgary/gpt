@@ -10,17 +10,25 @@
   <button onclick="ask()">Ask</button>
   <p id="answer"></p>
 
-  <script>
-    async function ask() {
-      const question = document.getElementById("question").value;
-      const response = await fetch("/ask", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: question })
-      });
-      const data = await response.json();
+<script>
+  async function ask() {
+    const question = document.getElementById("question").value;
+    const response = await fetch("/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query: question })
+    });
+    const data = await response.json();
+
+    // Check if answer exists before displaying
+    if (data.answer) {
       document.getElementById("answer").innerText = data.answer;
+    } else if (data.error) {
+      document.getElementById("answer").innerText = "Error: " + data.error;
+    } else {
+      document.getElementById("answer").innerText = "No answer received.";
     }
-  </script>
+  }
+</script>
 </body>
 </html>
