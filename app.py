@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request, Form
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 import openai
 import os
@@ -24,16 +24,18 @@ async def home(request: Request):
     visible_history = [msg for msg in chat_history if msg["role"] != "system"]
     return templates.TemplateResponse("index.html", {"request": request, "chat_history": visible_history})
 
-@app.post("/chat", response_class=HTMLResponse)
-async def chat(request: Request, user_input: str = Form(...)):
+@app.post("/chat")
+async def chat(user_input: str = Form(...)):
     chat_history.append({"role": "user", "content": user_input})
 
-    response = openai.ChatCompletion.create(
-        model="gpt-4",
-        messages=chat_history
-    )
-    assistant_reply = response["choices"][0]["message"]["content"]
-    chat_history.append({"role": "assistant", "content": assistant_reply})
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=chat_history
+        )
+        assistant_reply = response["choices"][0]["message"]["content"]
+        chat_history.append({"role": "assistant", "content": assistant_reply})
+    except Exception as e:
+        chat_history.append({"role": "assistant", "content": f"⚠️ Error: {e}"})
 
-    visible_history = [msg for msg in chat_history if msg["role"] != "system"]
-    return templates.TemplateResponse("index.html", {"request": request, "chat_history": visible_history})
+    return RedirectResponse(url="/", status_code=303)
