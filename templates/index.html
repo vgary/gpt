@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ask GaryGPT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .chatbox {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .chatbox h1 {
+            text-align: center;
+        }
+        .message {
+            margin: 10px 0;
+        }
+        .user { text-align: right; color: blue; }
+        .bot { text-align: left; color: green; }
+        form {
+            display: flex;
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="chatbox">
+        <h1>Ask GaryGPT</h1>
+        {% for chat in chat_history %}
+            <div class="message user"><strong>You:</strong> {{ chat['user'] }}</div>
+            <div class="message bot"><strong>GaryGPT:</strong> {{ chat['bot'] }}</div>
+        {% endfor %}
+        <form method="post">
+            <input type="text" name="user_input" placeholder="Ask something..." required>
+            <input type="submit" value="Ask">
+        </form>
+    </div>
+</body>
+</html>
