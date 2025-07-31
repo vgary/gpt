@@ -1,44 +1,57 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
+from typing import List
 import openai
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
+
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# Static files and templates
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
 
-# Serve index.html at root
-@app.get("/", response_class=HTMLResponse)
-async def serve_index():
-    with open("index.html", "r") as f:
-        return f.read()
+# In-memory conversation history
+conversation_history: List[dict] = [
+    {
+        "role": "system",
+        "content": "You are GaryGPT, an AI version of Gary Tong. You help people understand Gary's experience, skills, values, and accomplishments. Answer like you're helpful and knowledgeable, with a friendly tone."
+    }
+]
 
+# Request model
 class Question(BaseModel):
-    query: str
+    question: str
 
-with open("gary_resume.txt", "r") as f:
-    resume_content = f.read()
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.post("/ask")
-async def ask(question: Question):
-    prompt = f"Based on the following resume:\n{resume_content}\n\nQ: {question.query}\nA:"
+async def ask_question(question: Question):
+    user_input = question.question
+    conversation_history.append({"role": "user", "content": user_input})
+
     try:
         response = openai.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}]
+            model="gpt-4",  # You can change to gpt-3.5-turbo if needed
+            messages=conversation_history,
+            temperature=0.7
         )
-        answer = response.choices[0].message.content
-        return {"answer": answer}
+
+        reply = response.choices[0].message.content.strip()
+        conversation_history.append({"role": "assistant", "content": reply})
+
+        return {"answer": reply}
+
     except Exception as e:
-        return {"error": str(e)}
+        error_message = f"Error: {str(e)}"
+        conversation_history.append({"role": "assistant", "content": error_message})
+        return {"answer": error_message}
