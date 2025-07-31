@@ -36,4 +36,6 @@ async def post_chat(request: Request, user_input: str = Form(...)):
         messages=chat_history
     )
     assistant_reply = response.choices[0].message.content
-    chat_history.append({"role": "assistant", "content": assi_
+    chat_history.append({"role": "assistant", "content": assistant_reply})
+
+    return RedirectResponse(url="/", status_code=303)
