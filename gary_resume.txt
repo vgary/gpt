@@ -1,2 +1,235 @@
+● A Strategic Cloud Leader, guiding teams with a focus on innovation, performance, and seamless integration across multi-cloud environments while driving operational excellence.
+● A Seasoned Cloud Architect mastering customer-centric solutions across public and private cloud platforms, encompassing Azure, AWS, GCP, VMware, OpenStack, and beyond
+● A Networking and Security Expert adept at architecting cutting-edge solutions from industry leaders such as Cisco, Fortinet, Palo Alto, Cloudflare, Netskope, Zscaler, and more
+● A Visionary DevOps Leader committed to containerization, fostering collaboration, and leading the transformation of infrastructure and modern applications
+● A Results-Driven Problem Solver, excelling in high-pressure environments with innovation, resilience, and a focus on excellence.
+Experience
 
-Gary Tong is a cloud and data platform leader with expertise across AWS, Azure, GCP, and OCI. He has built enterprise-scale data warehouses, implemented FinOps and cloud governance at scale, and is passionate about AI. His experience spans cloud strategy, platform architecture, and AI-driven automation.
+The Lottery Corporation logo
+Senior Manager, Cloud
+Senior Manager, Cloud
+The Lottery CorporationThe Lottery Corporation
+Jul 2024 - Present · 1 yr 1 moJul 2024 to Present · 1 yr 1 mo
+Melbourne, Victoria, AustraliaMelbourne, Victoria, Australia
+● Oversee multi-cloud operations to ensure reliability, performance, and compliance across AWS, GCP, and Azure.
+● Implement governance policies to strengthen security, manage costs, and ensure regulatory compliance.
+● Work with cross-functional teams to align cloud strategies with business goals and drive innovation.
+● Oversee multi-cloud operations to ensure reliability, performance, and compliance across AWS, GCP, and Azure. ● Implement governance policies to strengthen security, manage costs, and ensure regulatory compliance. ● Work with cross-functional teams to align cloud strategies with business goals and drive innovation.
+Skills: People Management · FinOps · Azure · Google Cloud Platform (GCP) · Amazon Web Services (AWS)
+Skills: People Management · FinOps · Azure · Google Cloud Platform (GCP) · Amazon Web Services (AWS)
+UniSuper logo
+Cloud Platform Lead
+Cloud Platform Lead
+UniSuper · ContractUniSuper · Contract
+Jul 2023 - Jun 2024 · 1 yrJul 2023 to Jun 2024 · 1 yr
+Melbourne, Victoria, AustraliaMelbourne, Victoria, Australia
+● Drove the transition to cloud-native architecture and craft strategy for the adoption of application containerization.
+● Led FinOps initiatives to streamline VMware, Azure and GCP cloud expenses to maximize business benefits.
+● Collaborated with teams to ensure seamless cloud operations and proactively address any gaps or misalignments.
+● Drove the transition to cloud-native architecture and craft strategy for the adoption of application containerization. ● Led FinOps initiatives to streamline VMware, Azure and GCP cloud expenses to maximize business benefits. ● Collaborated with teams to ensure seamless cloud operations and proactively address any gaps or misalignments.
+Skills: Kubernetes · People Management · Azure · Terraform · DevOps · Google Cloud Platform (GCP)
+Skills: Kubernetes · People Management · Azure · Terraform · DevOps · Google Cloud Platform (GCP)
+National Disability Insurance Agency logo
+Cloud Architect
+Cloud Architect
+National Disability Insurance Agency · ContractNational Disability Insurance Agency · Contract
+Jan 2022 - Jun 2023 · 1 yr 6 mosJan 2022 to Jun 2023 · 1 yr 6 mos
+Melbourne, Victoria, AustraliaMelbourne, Victoria, Australia
+● Fostered partnerships with internal stakeholders and vendors, devising cloud strategies for AWS and Azure.
+● Designed the centralized data management solution, enhancing operational efficiency and real-time insights.
+● Enhanced cloud architecture, addressing over 200 security vulnerabilities and driving significant cost savings.
+● Fostered partnerships with internal stakeholders and vendors, devising cloud strategies for AWS and Azure. ● Designed the centralized data management solution, enhancing operational efficiency and real-time insights. ● Enhanced cloud architecture, addressing over 200 security vulnerabilities and driving significant cost savings.
+Skills: Kubernetes · Agile Methodologies · Azure · Git · Terraform · DevOps · Amazon Web Services (AWS) · Security
+Skills: Kubernetes · Agile Methodologies · Azure · Git · Terraform · DevOps · Amazon Web Services (AWS) · Security
+UniSuper logo
+Solutions Designer
+Solutions Designer
+UniSuperUniSuper
+May 2020 - Oct 2021 · 1 yr 6 mosMay 2020 to Oct 2021 · 1 yr 6 mos
+Melbourne, Victoria, AustraliaMelbourne, Victoria, Australia
+● Worked collaboratively with stakeholders to spearhead cloud adoption and transformation initiatives.
+● Delivered expert guidance in solution design, offering technical direction and valuable recommendations.
+● Architected Azure cloud solutions to deliver robust cloud infrastructure for business applications.
+● Worked collaboratively with stakeholders to spearhead cloud adoption and transformation initiatives. ● Delivered expert guidance in solution design, offering technical direction and valuable recommendations. ● Architected Azure cloud solutions to deliver robust cloud infrastructure for business applications.
+Skills: Agile Methodologies · Azure · DevOps · Cybersecurity · Security
+Skills: Agile Methodologies · Azure · DevOps · Cybersecurity · Security
+Telstra logo
+Solutions Architect
+Solutions Architect
+TelstraTelstra
+Jun 2016 - Dec 2019 · 3 yrs 7 mosJun 2016 to Dec 2019 · 3 yrs 7 mos
+Melbourne, AustraliaMelbourne, Australia
+● Directed the migration of services from Data Centers to public cloud platforms such as AWS, Azure, and GCP.
+● Pioneered Telstra’s inaugural OpenStack private cloud security product, enhancing cloud security capabilities.
+● Served as a subject matter expert, delivering technical support across a wide spectrum of Telstra products.
+● Consistently earned high performance ratings of 4-5 out of 5 in annual reviews for consecutive years.
+● Directed the migration of services from Data Centers to public cloud platforms such as AWS, Azure, and GCP. ● Pioneered Telstra’s inaugural OpenStack private cloud security product, enhancing cloud security capabilities. ● Served as a subject matter expert, delivering technical support across a wide spectrum of Telstra products. ● Consistently earned high performance ratings of 4-5 out of 5 in annual reviews for consecutive years.
+Skills: Agile Methodologies · Azure · DevOps · Google Cloud Platform (GCP) · Amazon Web Services (AWS) · Cybersecurity · Security · Python (Programming Language)
+Skills: Agile Methodologies · Azure · DevOps · Google Cloud Platform (GCP) · Amazon Web Services (AWS) · Cybersecurity · Security · Python (Programming Language)
+Ucomm Group logo
+Solutions Architect
+Solutions Architect
+Ucomm GroupUcomm Group
+Aug 2015 - Jan 2016 · 6 mosAug 2015 to Jan 2016 · 6 mos
+Greater Melbourne AreaGreater Melbourne Area
+● Functioned as a reliable consultant, crafting solution designs that adhere to enterprise architecture standards.
+● Performed technical analysis, design, and execution of Cisco network, security, and UC solutions.
+● Participated in sales endeavours by proposing Cisco solutions tailored to meet specific business needs.
+● Functioned as a reliable consultant, crafting solution designs that adhere to enterprise architecture standards. ● Performed technical analysis, design, and execution of Cisco network, security, and UC solutions. ● Participated in sales endeavours by proposing Cisco solutions tailored to meet specific business needs.
+Skills: Agile Methodologies · Cybersecurity · Security
+Skills: Agile Methodologies · Cybersecurity · Security
+Logicalis Asia Pacific logo
+Senior Consultant - Collaboration
+Senior Consultant - Collaboration
+Logicalis AustraliaLogicalis Australia
+Sep 2014 - Aug 2015 · 1 yrSep 2014 to Aug 2015 · 1 yr
+Melbourne, AustraliaMelbourne, Australia
+● Acted as the lead engineer within the PS team, overseeing the deployment of Cisco collaboration solutions.
+● Crafted and executed Cisco contact centre solutions for Australian Pharmacy Industries (API) / Priceline.
+● Handled incident escalations from global support centre, successfully resolving intricate voice and video issues.
+● Acted as the lead engineer within the PS team, overseeing the deployment of Cisco collaboration solutions. ● Crafted and executed Cisco contact centre solutions for Australian Pharmacy Industries (API) / Priceline. ● Handled incident escalations from global support centre, successfully resolving intricate voice and video issues.
+Skills: Unified Communications · Security
+Skills: Unified Communications · Security
+Eastern Health logo
+Communications Engineer
+Communications Engineer
+Eastern HealthEastern Health
+Jun 2013 - Aug 2014 · 1 yr 3 mosJun 2013 to Aug 2014 · 1 yr 3 mos
+Melbourne, AustraliaMelbourne, Australia
+● Deployed and oversaw the voice and video infrastructure, encompassing over 5,000 Cisco IP Phones.
+● Maintained the resilience of Cisco network infrastructure supporting 10,000 employees across five hospitals.
+● Enabled SSO by integrating FortiGate firewalls with AD, effectively managing security access controls.
+● Deployed and oversaw the voice and video infrastructure, encompassing over 5,000 Cisco IP Phones. ● Maintained the resilience of Cisco network infrastructure supporting 10,000 employees across five hospitals. ● Enabled SSO by integrating FortiGate firewalls with AD, effectively managing security access controls.
+Skills: Security
+Skills: Security
+Roctec Technology Limited logo
+Senior Presales Consultant
+Senior Presales Consultant
+Roctec Technology LimitedRoctec Technology Limited
+May 2011 - Jul 2012 · 1 yr 3 mosMay 2011 to Jul 2012 · 1 yr 3 mos
+Hong Kong SARHong Kong SAR
+● Collaborated with six account managers, securing over 70% market share of all H3C projects in Hong Kong.
+● Offered technical guidance to engineers, guaranteeing that proposed solutions aligned with customers' needs.
+● Developed H3C network solutions for clients, and produced comprehensive technical documentation.
+● Collaborated with six account managers, securing over 70% market share of all H3C projects in Hong Kong. ● Offered technical guidance to engineers, guaranteeing that proposed solutions aligned with customers' needs. ● Developed H3C network solutions for clients, and produced comprehensive technical documentation.
+NEXENTEL LIMITED logo
+Presales Manager
+Presales Manager
+NexEntel OfficialNexEntel Official
+Jun 2009 - Apr 2011 · 1 yr 11 mosJun 2009 to Apr 2011 · 1 yr 11 mos
+Bangkok, ThailandBangkok, Thailand
+● Established and enhanced a pre-sales team, earning recognition as the "Most Active Cisco Partner" in Thailand.
+● Led Cisco product presentations and proof of concepts, showcasing key features and advantages.
+● Drove business growth by cultivating relationships with customers in collaboration with sales teams.
+● Established and enhanced a pre-sales team, earning recognition as the "Most Active Cisco Partner" in Thailand. ● Led Cisco product presentations and proof of concepts, showcasing key features and advantages. ● Drove business growth by cultivating relationships with customers in collaboration with sales teams.
+Skills: People Management
+
+Licenses & certifications
+Amazon Web Services (AWS) logo
+Amazon Web Services Solutions Architect Professional (SAP)
+Amazon Web Services Solutions Architect Professional (SAP)
+Amazon Web Services (AWS)Amazon Web Services (AWS)
+Skills: AWS
+Skills: AWS
+The Linux Foundation logo
+Certified Kubernetes Administrator (CKA)
+Certified Kubernetes Administrator (CKA)
+The Linux FoundationThe Linux Foundation
+Skills: Kubernetes
+Skills: Kubernetes
+The Linux Foundation logo
+Certified Kubernetes Application Developer (CKAD)
+Certified Kubernetes Application Developer (CKAD)
+The Linux FoundationThe Linux Foundation
+Skills: Kubernetes
+Skills: Kubernetes
+The Linux Foundation logo
+Certified Kubernetes Security Specialist (CKS)
+Certified Kubernetes Security Specialist (CKS)
+The Linux FoundationThe Linux Foundation
+Skills: Kubernetes · Security
+Skills: Kubernetes · Security
+Cisco logo
+Cisco Certified Internetwork Expert Collaboration (CCIE)
+Cisco Certified Internetwork Expert Collaboration (CCIE)
+CiscoCisco
+Credential ID 17441Credential ID 17441
+Cisco logo
+Cisco Certified Internetwork Expert Service Provider (CCIE)
+Cisco Certified Internetwork Expert Service Provider (CCIE)
+CiscoCisco
+Credential ID 17441Credential ID 17441
+F5 logo
+F5 Certified Technology Specialist
+F5 Certified Technology Specialist
+F5F5
+Fortinet logo
+Fortinet Network Security Expert Level 4: Certified Professional
+Fortinet Network Security Expert Level 4: Certified Professional
+FortinetFortinet
+Google logo
+Google Cloud Certified Cloud Architect
+Google Cloud Certified Cloud Architect
+GoogleGoogle
+Google logo
+Google Cloud Certified Cloud Engineer
+Google Cloud Certified Cloud Engineer
+GoogleGoogle
+Juniper Networks logo
+Juniper Networks Certified Internet Specialist
+Juniper Networks Certified Internet Specialist
+Juniper NetworksJuniper Networks
+The Linux Foundation logo
+Kubestronauts
+Kubestronauts
+The Linux FoundationThe Linux Foundation
+Skills: Kubernetes
+Skills: Kubernetes
+Microsoft logo
+Microsoft Certified Azure AI Engineer Associate
+Microsoft Certified Azure AI Engineer Associate
+MicrosoftMicrosoft
+Microsoft logo
+Microsoft Certified Azure Database Administrator Associate
+Microsoft Certified Azure Database Administrator Associate
+MicrosoftMicrosoft
+Microsoft logo
+Microsoft Certified Azure Developer Associate
+Microsoft Certified Azure Developer Associate
+MicrosoftMicrosoft
+Microsoft logo
+Microsoft Certified Azure Network Engineer Associate
+Microsoft Certified Azure Network Engineer Associate
+MicrosoftMicrosoft
+Microsoft logo
+Microsoft Certified Azure Security Engineer Associate
+Microsoft Certified Azure Security Engineer Associate
+MicrosoftMicrosoft
+Microsoft logo
+Microsoft Certified Azure Solutions Architect Expert
+Microsoft Certified Azure Solutions Architect Expert
+MicrosoftMicrosoft
+Microsoft logo
+Microsoft Certified Cybersecurity Architect Expert
+Microsoft Certified Cybersecurity Architect Expert
+MicrosoftMicrosoft
+Microsoft logo
+Microsoft Certified DevOps Engineer Expert
+Microsoft Certified DevOps Engineer Expert
+MicrosoftMicrosoft
+Oracle logo
+Oracle Cloud Infrastructure 2022 Foundations Associate
+Oracle Cloud Infrastructure 2022 Foundations Associate
+OracleOracle
+The Open Group logo
+TOGAF 9 Certified
+TOGAF 9 Certified
+The Open GroupThe Open Group
+VMware logo
+VMware Certified Professional Data Center Virtualization (VCP-DCV) 
+VMware Certified Professional Data Center Virtualization (VCP-DCV) 
+VMwareVMware
+VMware logo
+VMware Certified Professional Network Virtualization (VCP-NV) 
+
+
