@@ -1,0 +1,2 @@
+
+Gary Tong is a cloud and data platform leader with expertise across AWS, Azure, GCP, and OCI. He has built enterprise-scale data warehouses, implemented FinOps and cloud governance at scale, and is passionate about AI. His experience spans cloud strategy, platform architecture, and AI-driven automation.
