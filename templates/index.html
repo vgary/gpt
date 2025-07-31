@@ -1,78 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>GaryGPT</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f8;
-            margin: 40px auto;
-            max-width: 700px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px #ccc;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        form {
-            display: flex;
-            margin-bottom: 20px;
-        }
-        input[type="text"] {
-            flex: 1;
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-        }
-        button {
-            padding: 12px 20px;
-            margin-left: 10px;
-            font-size: 16px;
-            border: none;
-            background-color: #007bff;
-            color: white;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .chat-entry {
-            margin-bottom: 15px;
-        }
-        .user {
-            color: #007aff;
-            font-weight: bold;
-        }
-        .assistant {
-            color: #10a37f;
-            font-weight: bold;
-        }
-        .message-text {
-            margin-left: 10px;
-            white-space: pre-wrap;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>GaryGPT</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #ffffff;
+      color: #444444;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 700px;
+      width: 100%;
+      margin-top: 40px;
+      padding: 0 20px 40px 20px;
+    }
+
+    h1 {
+      font-weight: 600;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 24px;
+      color: #222222;
+    }
+
+    form {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 14px 16px;
+      font-size: 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      outline-offset: 2px;
+      transition: outline-color 0.2s ease;
+    }
+
+    input[type="text"]:focus {
+      outline: 2px solid #3b82f6;
+      border-color: #3b82f6;
+    }
+
+    button {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 14px 24px;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 14px 18px;
+      border-radius: 16px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      font-size: 1rem;
+    }
+
+    .user-message {
+      align-self: flex-end;
+      background-color: #3b82f6;
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    .assistant-message {
+      align-self: flex-start;
+      background-color: #e5e7eb;
+      color: #111827;
+      border-bottom-left-radius: 4px;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
     <h1>Ask GaryGPT</h1>
     <form method="post">
-        <input type="text" name="user_input" placeholder="Ask Gary anything..." required autocomplete="off" />
-        <button type="submit">Send</button>
+      <input type="text" name="user_input" placeholder="Ask Gary anything..." required autocomplete="off" />
+      <button type="submit">Send</button>
     </form>
 
-    <div>
-        {% for msg in chat_history %}
-            {% if msg.role == "user" %}
-                <div class="chat-entry user"><span>You:</span><span class="message-text">{{ msg.content }}</span></div>
-            {% elif msg.role == "assistant" %}
-                <div class="chat-entry assistant"><span>GaryGPT:</span><span class="message-text">{{ msg.content }}</span></div>
-            {% endif %}
-        {% endfor %}
+    <div class="chat-container">
+      {% for msg in chat_history %}
+        {% if msg.role == "user" %}
+          <div class="message user-message">{{ msg.content }}</div>
+        {% elif msg.role == "assistant" %}
+          <div class="message assistant-message">{{ msg.content }}</div>
+        {% endif %}
+      {% endfor %}
     </div>
+  </div>
 </body>
 </html>
