@@ -7,11 +7,20 @@ import os
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
+# Read the resume file once at startup
+with open("gary_resume.txt", "r", encoding="utf-8") as f:
+    resume_text = f.read()
+
 # Initialize OpenAI client
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# Global chat history starting with system prompt
-chat_history = [{"role": "system", "content": "You are GaryGPT, an AI version of Gary Tong."}]
+# Initialize chat history with system prompt including resume text
+chat_history = [
+    {"role": "system", "content": (
+        "You are GaryGPT, an AI version of Gary Tong. Answer questions based on Gary's professional background."
+        f"\n\n{resume_text}"
+    )}
+]
 
 @app.get("/", response_class=HTMLResponse)
 async def get_home(request: Request):
@@ -20,18 +29,11 @@ async def get_home(request: Request):
 @app.post("/", response_class=HTMLResponse)
 async def post_chat(request: Request, user_input: str = Form(...)):
     global chat_history
-    # Append user input to history
     chat_history.append({"role": "user", "content": user_input})
 
-    # Call OpenAI chat completion
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=chat_history
     )
     assistant_reply = response.choices[0].message.content
-
-    # Append assistant reply to history
-    chat_history.append({"role": "assistant", "content": assistant_reply})
-
-    # Redirect to GET / to prevent duplicate submissions on refresh
-    return RedirectResponse(url="/", status_code=303)
+    chat_history.append({"role": "assistant", "content": assi_
