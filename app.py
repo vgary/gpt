@@ -1,43 +1,46 @@
-# app.py
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, JSONResponse
-from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
+from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.templating import Jinja2Templates
-import openai
+from pydantic import BaseModel
 import os
+import openai
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# Set your OpenAI key here or use an environment variable
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# Load resume content once on startup
+with open("gary_resume.txt", encoding="utf-8") as f:
+    resume_text = f.read()
 
 class ChatInput(BaseModel):
     user_input: str
-
-# Load Gary's resume once
-with open("gary_resume.txt", "r", encoding="utf-8") as file:
-    gary_context = file.read()
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 @app.post("/chat")
-async def chat(chat: ChatInput):
-    prompt = f"This is a chatbot that answers questions based on Gary Tong's experience.\nResume:\n{gary_context}\n\nUser: {chat.user_input}\nGaryGPT:"
+async def chat_endpoint(chat: ChatInput):
+    question = chat.user_input.strip()
+
+    # Build prompt by injecting the resume (hidden from user)
+    prompt = (
+        "You are GaryGPT, an AI assistant trained on Gary's resume below.\n\n"
+        f"{resume_text}\n\n"
+        f"Answer this question concisely and clearly:\n{question}\n"
+    )
 
     try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are GaryGPT, an AI chatbot version of Gary Tong."},
-                {"role": "user", "content": prompt}
-            ]
+        completion = openai.ChatCompletion.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=300,
+            temperature=0.5,
         )
-        answer = response.choices[0].message["content"].strip()
-        return {"answer": answer}
+        answer = completion.choices[0].message.content.strip()
     except Exception as e:
-        return JSONResponse(content={"error": str(e)}, status_code=500)
+        answer = f"Sorry, something went wrong: {e}"
+
+    return JSONResponse({"response": answer})
