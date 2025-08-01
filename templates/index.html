@@ -2,117 +2,152 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ask GaryGPT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GaryGPT Chatbot</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f0f2f5;
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      padding: 2rem;
       min-height: 100vh;
     }
-
-    header {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #202123;
-    }
-
-    #chat {
-      flex: 1;
-      padding: 1rem;
-      max-width: 800px;
-      margin: 0 auto;
-      overflow-y: auto;
-    }
-
-    .message {
-      background-color: white;
-      border-radius: 10px;
-      padding: 1rem;
+    h1 {
+      font-size: 2rem;
       margin-bottom: 1rem;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
     }
-
-    .message.user {
-      background-color: #d1e7ff;
-      align-self: flex-end;
-    }
-
-    .message.assistant {
-      background-color: #fefefe;
-      align-self: flex-start;
-    }
-
     form {
       display: flex;
-      justify-content: center;
-      padding: 1rem;
-      border-top: 1px solid #ccc;
-      background: white;
-      position: sticky;
-      bottom: 0;
-    }
-
-    input[type="text"] {
       width: 100%;
       max-width: 600px;
-      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 0.75rem;
+      font-size: 1rem;
       border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
+      border-radius: 0.375rem 0 0 0.375rem;
     }
-
     button {
-      margin-left: 0.5rem;
-      padding: 1rem 1.5rem;
-      border: none;
-      background-color: #10a37f;
-      color: white;
+      padding: 0.75rem 1rem;
       font-size: 1rem;
-      border-radius: 8px;
+      border: none;
+      background-color: #4f46e5;
+      color: white;
+      border-radius: 0 0.375rem 0.375rem 0;
       cursor: pointer;
+      transition: background-color 0.2s ease;
     }
-
+    button:hover {
+      background-color: #4338ca;
+    }
+    .chat-history {
+      width: 100%;
+      max-width: 600px;
+      background: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      height: 400px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .message {
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+    .user {
+      font-weight: bold;
+      color: #2563eb;
+    }
+    .assistant {
+      font-weight: bold;
+      color: #10b981;
+    }
     @media (max-width: 600px) {
-      input[type="text"] {
-        font-size: 1rem;
-        padding: 0.75rem;
+      form {
+        flex-direction: column;
       }
-
+      input[type="text"], button {
+        width: 100%;
+        border-radius: 0.375rem;
+      }
       button {
-        padding: 0.75rem 1rem;
-        font-size: 0.95rem;
+        margin-top: 0.5rem;
+      }
+      .chat-history {
+        height: 300px;
       }
     }
   </style>
 </head>
 <body>
+  <h1>Want to know more about Gary?</h1>
 
-  <header>
-    Want to know more about Gary?
-  </header>
-
-  <div id="chat">
-    {% for msg in messages %}
-      <div class="message {{ msg.role }}">
-        {{ msg.content }}
-      </div>
-    {% endfor %}
-  </div>
-
-  <form action="/chat" method="post">
-    <input type="text" name="message" placeholder="Ask me anything..." required />
-    <button type="submit">Send</button>
+  <form id="chat-form">
+    <input
+      type="text"
+      id="user_input"
+      placeholder="Ask me anything..."
+      required
+      autocomplete="off"
+    />
+    <button type="submit">Ask</button>
   </form>
 
+  <div class="chat-history" id="chat-history"></div>
+
+  <script>
+    const form = document.getElementById("chat-form");
+    const input = document.getElementById("user_input");
+    const chatHistory = document.getElementById("chat-history");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const question = input.value.trim();
+      if (!question) return;
+
+      // Add user message
+      const userMsg = document.createElement("div");
+      userMsg.classList.add("message");
+      userMsg.innerHTML = `<span class="user">You:</span> ${question}`;
+      chatHistory.appendChild(userMsg);
+
+      chatHistory.scrollTop = chatHistory.scrollHeight;
+      input.value = "";
+      input.disabled = true;
+
+      try {
+        const res = await fetch("/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ user_input: question }),
+        });
+        const data = await res.json();
+
+        const assistantMsg = document.createElement("div");
+        assistantMsg.classList.add("message");
+        assistantMsg.innerHTML = `<span class="assistant">GaryGPT:</span> ${data.response}`;
+        chatHistory.appendChild(assistantMsg);
+
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+      } catch (error) {
+        const errorMsg = document.createElement("div");
+        errorMsg.classList.add("message");
+        errorMsg.innerHTML = `<span class="assistant">GaryGPT:</span> Sorry, something went wrong.</div>`;
+        chatHistory.appendChild(errorMsg);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+      } finally {
+        input.disabled = false;
+        input.focus();
+      }
+    });
+  </script>
 </body>
 </html>
