@@ -1,59 +1,43 @@
-from fastapi import FastAPI, Request, Form
-from fastapi.responses import HTMLResponse
+# app.py
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 from fastapi.templating import Jinja2Templates
 import openai
 import os
 
-# Load resume content once at startup
-with open("gary_resume.txt", "r") as f:
-    resume_text = f.read()
-
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
 app = FastAPI()
-
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-chat_history = []
+# Set your OpenAI key here or use an environment variable
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+class ChatInput(BaseModel):
+    user_input: str
+
+# Load Gary's resume once
+with open("gary_resume.txt", "r", encoding="utf-8") as file:
+    gary_context = file.read()
 
 @app.get("/", response_class=HTMLResponse)
-async def get_form(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request, "chat_history": chat_history})
+async def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
-@app.post("/chat", response_class=HTMLResponse)
-async def chat(request: Request, user_input: str = Form(...)):
-    prompt = f"""You are a helpful AI assistant who knows everything about Gary based on his resume below.
-
-Resume:
-{resume_text}
-
-Conversation history:
-{format_chat_history(chat_history)}
-
-User: {user_input}
-AI:"""
+@app.post("/chat")
+async def chat(chat: ChatInput):
+    prompt = f"This is a chatbot that answers questions based on Gary Tong's experience.\nResume:\n{gary_context}\n\nUser: {chat.user_input}\nGaryGPT:"
 
     try:
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}]
+            messages=[
+                {"role": "system", "content": "You are GaryGPT, an AI chatbot version of Gary Tong."},
+                {"role": "user", "content": prompt}
+            ]
         )
-        assistant_response = response['choices'][0]['message']['content'].strip()
+        answer = response.choices[0].message["content"].strip()
+        return {"answer": answer}
     except Exception as e:
-        assistant_response = f"Error: {e}"
-
-    chat_history.append({"role": "user", "content": user_input})
-    chat_history.append({"role": "assistant", "content": assistant_response})
-
-    return templates.TemplateResponse("index.html", {
-        "request": request,
-        "chat_history": chat_history
-    })
-
-def format_chat_history(history):
-    result = ""
-    for msg in history:
-        result += f"{msg['role'].capitalize()}: {msg['content']}\n"
-    return result
+        return JSONResponse(content={"error": str(e)}, status_code=500)
