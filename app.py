@@ -1,41 +1,59 @@
 from fastapi import FastAPI, Request, Form
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+import openai
 import os
-from openai import OpenAI, OpenAIError
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-app = FastAPI()
-templates = Jinja2Templates(directory="templates")
-
-# Load resume once
-with open("gary_resume.txt", "r", encoding="utf-8") as f:
+# Load resume content once at startup
+with open("gary_resume.txt", "r") as f:
     resume_text = f.read()
 
-# Chat history with system prompt and resume
-chat_history = [
-    {"role": "system", "content": "You are GaryGPT, an AI assistant that answers questions based on Gary Tong's experience. Use only the resume as context."},
-    {"role": "system", "content": resume_text}
-]
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
+chat_history = []
 
 @app.get("/", response_class=HTMLResponse)
-async def home(request: Request):
-    visible_history = [msg for msg in chat_history if msg["role"] != "system"]
-    return templates.TemplateResponse("index.html", {"request": request, "chat_history": visible_history})
+async def get_form(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request, "chat_history": chat_history})
 
-@app.post("/chat")
-async def chat(user_input: str = Form(...)):
-    chat_history.append({"role": "user", "content": user_input})
+@app.post("/chat", response_class=HTMLResponse)
+async def chat(request: Request, user_input: str = Form(...)):
+    prompt = f"""You are a helpful AI assistant who knows everything about Gary based on his resume below.
+
+Resume:
+{resume_text}
+
+Conversation history:
+{format_chat_history(chat_history)}
+
+User: {user_input}
+AI:"""
 
     try:
-        response = client.chat.completions.create(
-            model="gpt-4",
-            messages=chat_history
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": prompt}]
         )
-        assistant_reply = response.choices[0].message.content
-        chat_history.append({"role": "assistant", "content": assistant_reply})
-    except OpenAIError as e:
-        chat_history.append({"role": "assistant", "content": f"⚠️ Error: {e}"})
+        assistant_response = response['choices'][0]['message']['content'].strip()
+    except Exception as e:
+        assistant_response = f"Error: {e}"
 
-    return RedirectResponse(url="/", status_code=303)
+    chat_history.append({"role": "user", "content": user_input})
+    chat_history.append({"role": "assistant", "content": assistant_response})
+
+    return templates.TemplateResponse("index.html", {
+        "request": request,
+        "chat_history": chat_history
+    })
+
+def format_chat_history(history):
+    result = ""
+    for msg in history:
+        result += f"{msg['role'].capitalize()}: {msg['content']}\n"
+    return result
