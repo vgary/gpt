@@ -25,7 +25,6 @@ async def home(request: Request):
 async def chat_endpoint(chat: ChatInput):
     question = chat.user_input.strip()
 
-    # Build prompt by injecting the resume (hidden from user)
     prompt = (
         "You are GaryGPT, an AI assistant trained on Gary's resume below.\n\n"
         f"{resume_text}\n\n"
@@ -33,7 +32,7 @@ async def chat_endpoint(chat: ChatInput):
     )
 
     try:
-        completion = openai.ChatCompletion.create(
+        completion = openai.chat.completions.create(
             model="gpt-4o-mini",
             messages=[{"role": "user", "content": prompt}],
             max_tokens=300,
