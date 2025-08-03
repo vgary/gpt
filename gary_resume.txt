@@ -131,4 +131,34 @@ The Open Group TOGAF 9 Certified
 VMware Certified Professional Data Center Virtualization (VCP-DCV) 
 VMware Certified Professional Network Virtualization (VCP-NV) 
 
+Community:
+Kubernetes InstructorAs a passionate Kubernetes Instructor, I lead tailored educational sessions for internal teams and diverse communities. With meticulous planning and innovative delivery methods, I create comprehensive training programs to empower participants on their Kubernetes journeys. I also regularly publish educational articles on LinkedIn aimed at guiding individuals in leveraging Terraform for infrastructure management. Kubernetes User Group Co-organizerAs a co-organizer for the Kubernetes User Group, I lead knowledge-sharing sessions, workshops, and networking events within the community. Collaborating with industry leaders like Amazon, Microsoft, and Google, I co-organize impactful events to promote learning and collaboration.
+
+Hobbies:
+Gary is curious, hands-on, and enjoys mentoring junior engineers. He also built AI chatbots for his kids. Outside of work, he’s into reading and cooking.
+
+Projects:
+Telstra SecureEdge
+A Telstra security solution designed to deliver secure internet access and enforce consistent security policies.
+As the solution architect at Telstra, I led the design and delivery of Telstra’s SecureEdge solution, protecting users, networks, and applications across remote, branch, and cloud environments. I drove the technical strategy across all SecureEdge offerings, ensuring consistent security policies and zero-trust principles.
+
+Azure Cloud Foundations
+An Azure cloud solution aimed at transitioning ClickOps to DevOps and IaC methodologies, enhancing security measures, and streamlining costs. 
+As the cloud architect at NDIA I facilitated communication with stakeholders and translated both business and technical needs into designs for a robust Azure architecture. This initiative culminated in the implementation of a cloud infrastructure managed by Terraform, significantly bolstering cloud security and operational efficiency.
+
+Modern Data Platform
+A modern enterprise data warehouse that enhances data management and analytics capabilities across the organization.
+As the Cloud Platform Lead at UniSuper, I directed the development of a modern data platform utilizing Azure Databricks and Data Factory. I oversaw solution delivery, managed strategic partnerships, and ensured alignment with organizational objectives to enhance enterprise data management and analytics capabilities.
+
+Veeam Backup for Cloud Applications
+An enterprise backup solution catering to Microsoft 365, AWS/Azure workloads, and applications running on Kubernetes.
+As the cloud architect at NDIA, I orchestrated the development of the backup solution architecture in both AWS and Azure environments. Leveraging Veeam/Kasten Backup software, the solution safeguards data across Microsoft 365, AWS, and Azure workloads, as well as applications on Kubernetes (AWS EKS and Azure AKS).
+
+Azure Virtual WAN and Azure VMware Solution
+A cloud transformation initiative aimed at integrating SD-WAN networks with Azure Virtual WAN and Azure VMware Solution.
+As the solution architect at Unisuper, I led the design process to elevate office networks to a software-defined infrastructure, with Azure Virtual WAN serving as the secured hub to enhance network security and performance. Leveraging the Azure VMware solution, we facilitated efficient virtual machine migrations, ensuring seamless transitions.
+
+Centralized Logging Data Management 
+A centralized logging solution for real-time insights, enhanced security, improved operational efficiency, and cost optimization.
+As the cloud architect at NDIA, I designed the centralized logging data management solution to manage logs onboarded from various sources to Microsoft Sentinel, and created incident response runbooks to accelerate resolution. The solution ensured seamless log collection and improved security visibility across environments.
 
